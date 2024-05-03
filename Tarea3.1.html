@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tarea 3 Rafael Cerdas</title>
+    <!-- Vue.js CDN -->
+    <script src="https://unpkg.com/vue@3"></script>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div id="app">
+        <div class="contact-list">
+            <h2>All Contacts</h2>
+            <ul>
+                <li v-for="(contact, index) in contacts" :key="index" @click="selectContact(index)">
+                    {{ contact.name }}
+                </li>
+            </ul>
+        </div>
+        <div class="contact-form">
+            <h2>{{ selectedContact ? 'Contact Details' : 'Add New Contact' }}</h2>
+            <input type="text" v-model="newContact.name" placeholder="Name" required><br>
+            <input type="text" v-model="newContact.work" placeholder="Work"><br>
+            <input type="text" v-model="newContact.mobile" placeholder="Mobile"><br>
+            <input type="email" v-model="newContact.email" placeholder="Email"><br>
+            <input type="text" v-model="newContact.address" placeholder="Address"><br>
+            <button @click="selectedContact ? updateContact() : addContact()">
+                {{ selectedContact ? 'Save Contact' : 'Add Contact' }}
+            </button>
+            <button v-if="selectedContact" @click="deleteContact()">Delete Contact</button>
+
+        </div>
+    </div>
+
+    <script>
+        const app = Vue.createApp({
+            data() {
+                return {
+                    contacts: [
+                    ],
+                    newContact: {
+                        name: '',
+                        work: '',
+                        mobile: '',
+                        email: '',
+                        address: ''
+                    },
+                    selectedContact: null
+                };
+            },
+            methods: {
+                addContact() {
+                    this.contacts.push({ ...this.newContact });
+                    this.clearForm();
+                },
+                clearForm() {
+                    this.newContact = {
+                        name: '',
+                        work: '',
+                        mobile: '',
+                        email: '',
+                        address: ''
+                    };
+                },
+                selectContact(index) {
+                    this.selectedContact = this.contacts[index];
+                    this.newContact = { ...this.selectedContact };
+                },
+                updateContact() {
+                    const index = this.contacts.findIndex(contact => contact === this.selectedContact);
+                    if (index !== -1) {
+                        this.contacts[index] = { ...this.newContact };
+                        this.clearForm();
+                        this.selectedContact = null;
+                    }
+                },
+                deleteContact() {
+                    if (this.selectedContact !== null) {
+                        const index = this.contacts.indexOf(this.selectedContact);
+                        if (index !== -1) {
+                            this.contacts.splice(index, 1);
+                            this.selectedContact = null;
+                        }
+                    }
+                }
+            }
+        });
+
+        app.mount('#app');
+    </script>
+</body>
+
+</html>

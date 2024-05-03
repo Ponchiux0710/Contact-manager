@@ -1,0 +1,106 @@
+  /* Estilos CSS Tarea 3 Rafael Cerdas */
+  body {
+      font-family: Arial, sans-serif;
+      background-color: #f5f5f5;
+      margin: 0;
+      padding: 0;
+  }
+
+  #app {
+      display: flex;
+      justify-content: center;
+      align-items: flex-start;
+      padding: 20px;
+  }
+
+  .contact-form,
+  .contact-list {
+      width: 300px;
+      height: 400px;
+      background-color: #fff;
+      border-radius: 5px;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+      padding: 20px;
+  }
+
+  .contact-list {
+      overflow-y: auto;
+      border-right: 1px solid #000;
+      padding-right: 10px;
+  }
+
+  .contact-list h2,
+  .contact-form h2 {
+      margin-top: 0;
+      font-size: 18px;
+      color: #333;
+  }
+
+  .contact-list li {
+      cursor: pointer;
+      padding: 10px;
+      background-color: #f0f0f0;
+      border-bottom: 1px solid #ddd;
+  }
+
+  .contact-list li:last-child {
+      border-bottom: none;
+  }
+
+  .contact-list li:hover {
+      background-color: #e0e0e0;
+  }
+
+  .contact-form input[type="text"],
+  .contact-form input[type="email"] {
+      width: calc(100% - 20px);
+      padding: 10px;
+      margin-bottom: 10px;
+      border: 1px solid #ddd;
+      border-radius: 3px;
+  }
+
+  .contact-form button {
+      width: 49%;
+      padding: 10px;
+      background-color: #007bff;
+      color: #fff;
+      border: none;
+      border-radius: 3px;
+      cursor: pointer;
+      margin-top: 10px;
+  }
+
+  .contact-form button:last-child {
+      margin-left: 2%;
+  }
+
+  .contact-form button:hover {
+      background-color: #0056b3;
+  }
+
+  .contact-details {
+      flex: 1;
+      background-color: #fff;
+      border-radius: 5px;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+      padding: 20px;
+  }
+
+  .contact-details p {
+      margin: 0;
+      padding: 5px 0;
+  }
+
+  .contact-details button {
+      padding: 10px;
+      background-color: #dc3545;
+      color: #fff;
+      border: none;
+      border-radius: 3px;
+      cursor: pointer;
+  }
+
+  .contact-details button:hover {
+      background-color: #c82333;
+  }
